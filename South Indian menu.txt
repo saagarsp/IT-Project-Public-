@@ -1,0 +1,25 @@
+Idli
+Plain Dosa
+Masala Dosa
+Rava Dosa
+Mysore Dosa
+Cheese Dosa
+Onion Dosa
+Garlic Dosa
+Spring Dosa
+Parata
+Uttappam
+Onion Uttappam
+Egg Uttappam
+Egg Roast
+Nehi Roast
+Roast Mutta Parata
+Veech Parata
+Egg Veech Parata;omelet
+Half Boil
+Kalki / Loose Boil
+Full Boil
+Mutta Porial
+Puri
+Pongal
+Khichidi
