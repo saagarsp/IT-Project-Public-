@@ -3,17 +3,17 @@ public class Restaurant {
 
 	final String name;
 	private String[] address;
-    final int pincode;
+    final String city;
     final String type;
 	final double rating;
 	private final String timing;
 	private final String review;
 	final Menu menu;
 	
-	public Restaurant(String a, String[] b, int p, String e, double r, String c, String d, Menu m) {
+	public Restaurant(String a, String[] b, String p, String e, double r, String c, String d, Menu m) {
 		name = a;
 		address = b;
-		pincode = p;
+		city = p;
 		type = e;
 		rating = r;
 		timing = c;

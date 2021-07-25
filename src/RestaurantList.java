@@ -8,16 +8,16 @@ public class RestaurantList extends Details{
 		super();
 		Restaurant[] res = new Restaurant[1002];
 		for(int i = 0; i<1002; i++) {
-			res[i] = new Restaurant(names[i], address[i], pincode[i], type[i], rating[i], timing[i], review[i], menus[i]);
+			res[i] = new Restaurant(names[i], address[i], city[i], type[i], rating[i], timing[i], review[i], menus[i]);
 		}
 		restaurants = res;
 	}
 	
 	
-	public Restaurant[] searchByLocaion(int pin) {
+	public Restaurant[] searchByLocaion(String city) {
 		ArrayList<Restaurant> list = new ArrayList<Restaurant>();  
 		 for(int i = 0; i<1002; i++) {
-			 if(this.restaurants[i].pincode>=pin-15||this.restaurants[i].pincode<=pin+15) //taking by +-15 to pincode
+			 if(this.restaurants[i].city.equals(city)) //restaurant.city == city
 					 list.add(this.restaurants[i]);
 		 }
 		 
