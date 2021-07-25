@@ -3,7 +3,7 @@ public class Details {
 	
 	String[] names = new String[1002];
 	String[][] address = new String[1002][13];
-	int[] pincode = new int[1002];
+	String[] city = new String[1002];
 	String[] type = new String[1002];
 	double[] rating = new double[1002];
 	String[] timing = new String[1002];
@@ -47,7 +47,7 @@ public class Details {
 		names = ReadFile.readStrings("names.txt");
 		address = ReadFile.readAdd("addresses.txt");
 		rating = ReadFile.readDouble("ratings.txt");
-		pincode = ReadFile.readInt("zipcode.txt");
+		city = ReadFile.readStrings("cities.txt");
 		timing = ReadFile.readStrings("timing.txt");
 		review = ReadFile.readStrings("review.txt");
 		type = typeReturn();
