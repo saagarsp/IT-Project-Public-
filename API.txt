@@ -1,0 +1,42 @@
+public class Detalis	
+
+	Details() 			//Contructor that reads all (all arrays fields in Restaurant.java)files using ReadFile.java
+	private String randomType()	//Returning a random type
+	private String[] typeReturn() 	//Method to assingn types to Resturants
+	private Menu[] returnMenu() 	//Method to return specific menu to corresponding type
+	 
+public class Restaurant
+	
+	Restaurant(String name, String[] address, String city, // Contructor, create Restaurant Object
+			String type, double rating, 
+			String timing, String review, Menu menu) 
+
+	String[] getAddress()    //getter method for address
+	String toString()        //printing name + rating +type
+
+public class ReadFile
+	
+	ReadFile() 					//Empty Contructor
+	public static String[] readStrings(String s)	//Reading strings from .txt file
+	public static double[] readDouble(String s)	//Reading double from .txt file
+	public static int[] readInt(String s)		//Reading integer from .txt file
+	public static String[][] readAdd(String s)	//Reading Address strings from .txt file
+
+public class RestaurantList extends Detalis
+
+	RestaurantList() 				  //Constructor to create Array of Resturants
+	public Restaurant[] searchByLocaion(String city)  //Gives Restaurant array by city	
+	public Restaurant[] searchByRating(double rate)   //Gives Restaurant array by rating greater than or equals to rate
+	public String byName(String s)			  //Gives Restaurant by name 
+	public Restaurant[] searchByType()		  //Gives Restaurant array by different types
+	public static void printRes(Restaurant[] res)	  //method for print Restaurant array 
+
+public class Menu
+	
+	Menu(String[] menu)        //Constructor for Menu Object
+	public void displayMenu()  //Printing Menu
+
+public class MenuList
+	
+	MenuList()   			//Empty Constructor
+	public void buildLibrary()   	//Array of Menu for diffrent types of Resturants  
