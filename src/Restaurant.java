@@ -26,6 +26,8 @@ public class Restaurant {
 	}
 	
 	public String toString() {
+		if(this.name.equals("NOT FOUND"))
+			return this.name;
 		return this.name + "\n" + this.rating + "\n" + this.type + "\n" ;/*+ this.timing + "\n" +this.address[0] + "\n" + this.address[1] + "\n" + this.address[2] + "\n" + this.address[3] + "\n" + this.address[4] + "\n" + this.address[5] + "\n" +this.address[6] + "\n" + this.address[7] + "\n" + this.address[8] + "\n" + this.address[9] + "\n" + this.address[10] + "\n" + this.address[11] + "\n" + this.address[12] + "\n" + this.review;*/
 	}
 	

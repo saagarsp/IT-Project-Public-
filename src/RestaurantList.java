@@ -38,12 +38,12 @@ public class RestaurantList extends Details{
 		return resByRating;
 	}
 	
-	public String byName(String s) {
+	public Restaurant byName(String s) {
 		for(int i = 0; i<1002; i++) {
 			if(this.restaurants[i].name.equals(s))
-				return this.restaurants[i].toString();
+				return this.restaurants[i];
 		}
-		return "Not Found";
+		return new Restaurant("NOT FOUND", null, null, null, 0, null, null, null);
 	}
 	
 	public Restaurant[] searchByType() {
@@ -97,9 +97,9 @@ public class RestaurantList extends Details{
 	
 	public static void main(String[] args) {
 		RestaurantList res = new RestaurantList();
-		Restaurant[] restaurants = res.searchByType();
-		printRes(restaurants);
-		//StdOut.println(res.byName("The Dapper Palace"));
+		//Restaurant[] restaurants = res.searchByType();
+		//printRes(restaurants);
+		StdOut.println(res.byName("The Dapper Palace"));
 		
 		//StdOut.println(res.byRating(3)[0]);
 		//printRes(res.byLocaion(123456));
