@@ -100,8 +100,4 @@ public class FoodAccount {
         System.out.println("\n\n 1] Delivery \t\t\t\t 2] Dine-in \t\t\t\t 3] Takeaway \n\n");
         return q;
     }
-    public static void main(String[] args){
-       FoodAccount f = new FoodAccount("sdw","def",958485522,"43 afhindfr",2);
-        f.start();
-    }
 }
