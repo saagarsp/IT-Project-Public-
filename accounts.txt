@@ -1,0 +1,7 @@
+Pratham:pratham:9924622232:3,anand bungalows,gulab tower,ahmedabad:1:Ahmedabad
+Suryansh:suryansh:9924622233:4,anand bungalows,gulab tower,Jodhpur:2:Jodhpur
+Prayag:prayag:9924622234:5,anand bungalows,gulab tower,Bangalore:0:Bangalore
+Kris:kris:9924622235:6,anand bungalows,gulab tower,Mangalore:1:Mangalore
+Meet:meet:9924622236:7,anand bungalows,gulab tower,Mumbai:1:Mumbai
+Rithvik:rithvik:9924622237:8,anand bungalows,gulab tower,Gwalior:2:Gwalior
+Raj:raj:9924622238:9,anand bungalows,gulab tower,Delhi:0:Delhi
