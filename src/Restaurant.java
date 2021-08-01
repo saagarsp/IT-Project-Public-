@@ -9,6 +9,8 @@ public class Restaurant {
 	private final String timing;
 	private final String review;
 	final Menu menu;
+	Table[] tables= new Table[4];
+
 	
 	public Restaurant(String a, String[] b, String p, String e, double r, String c, String d, Menu m) {
 		name = a;
