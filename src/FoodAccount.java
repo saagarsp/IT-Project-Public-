@@ -8,6 +8,16 @@ public class FoodAccount {
     String address;
     double phoneno;
     String city;
+
+    public  FoodAccount() {
+        this.userId = "null";
+        this.password = "null";
+        this.phoneno = 0;
+        this.address ="null";
+        this.cov = 0;
+        this.city = "null";
+    }
+
     public FoodAccount(String userId,String password,double phoneno,String address,int cov,String city){
         this.userId = userId;
         this.password = password;

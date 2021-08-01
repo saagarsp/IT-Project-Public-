@@ -4,7 +4,7 @@ public class RestaurantList extends Details{
 
 	private Restaurant[] restaurants;
 	
-	public RestaurantList() {          // constructor for Restaurantt array
+	public RestaurantList() {          // constructor for Restaurant array
 		super();
 		Restaurant[] res = new Restaurant[1002];
 		for(int i = 0; i<1002; i++) {
@@ -13,8 +13,7 @@ public class RestaurantList extends Details{
 		restaurants = res;
 	}
 	
-	
-	public Restaurant[] searchByLocaion(String city) {
+	public Restaurant[] searchByLocation(String city) {
 		ArrayList<Restaurant> list = new ArrayList<Restaurant>();  
 		 for(int i = 0; i<1002; i++) {
 			 if(this.restaurants[i].city.equals(city)) //restaurant.city == city
@@ -97,6 +96,7 @@ public class RestaurantList extends Details{
 		else
 			return resByType4;
 	}
+
 	public static void printRes(Restaurant[] res) {
 		for (Restaurant m: res) {
 			System.out.println(m);

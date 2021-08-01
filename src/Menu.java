@@ -10,10 +10,7 @@ public class Menu {
 		
 		System.out.println("MENU");
 		for(int i=0;i<24;i++) {
-			System.out.println(this.menu[i]);
+			System.out.println((i + 1) + "." + " " + this.menu[i]);
 		}
 	}
-	
-	
-
 }
