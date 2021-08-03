@@ -1,24 +1,23 @@
-Pancake
-Veg Burger
-Fried Chicken Burger
-American Cheeseburger
-Grilled Chicken Burger
-Veg Sandwich
-Grilled Veg
-Sandwich
-Egg Sandwich
-Grilled Cheese Sandwich
-Muffin
-Burrito
-Veg Taco
-Paneer Taco
-Chicken Taco
-Hot Dog
-Crispy Fried Chicken
-Spicy Fried Chicken
-Donuts
-Margherita Pizza
-Veggie Delite Pizza
-Hot Chicken Pizza
-Veg Munchurian
-Chicken Munchurian
+1. Veg Burger
+2. Fried Chicken Burger
+3. American Cheeseburger
+4. Grilled Chicken Burger
+5. Veg Sandwich
+6. Grilled Veg
+7. Sandwich
+8. Egg Sandwich
+9. Grilled Cheese Sandwich
+10. Muffin
+11. Burrito
+12. Veg Taco
+13. Paneer Taco
+14. Chicken Taco
+15. Hot Dog
+16. Crispy Fried Chicken
+17. Spicy Fried Chicken
+18. Donuts
+19. Margherita Pizza
+20. Veggie Delite Pizza
+21. Hot Chicken Pizza
+22. Veg Munchurian
+23. Chicken Munchurian

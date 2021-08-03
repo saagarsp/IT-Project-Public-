@@ -57,7 +57,7 @@ public class ReadFile {
 		try {
 			myReader = new Scanner(myObj);
 			while (myReader.hasNextLine()) {
-				data[i] = myReader.nextInt();
+				data[i] = Integer.parseInt(myReader.nextLine());
 				i++;
 			}
 		} catch (FileNotFoundException e) {
