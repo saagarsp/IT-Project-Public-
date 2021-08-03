@@ -15,7 +15,7 @@ public class FoodAccountsList {
                 while (myReader.hasNextLine()) {
                     String data = myReader.nextLine();
                     String[] s = data.split(":");
-                    this.f[i] = new FoodAccount(s[0],s[1],Double.parseDouble(s[2]),s[3],Integer.parseInt(s[4]),s[5]);
+                    this.f[i] = new FoodAccount(Integer.parseInt(s[0]),s[1],s[2],Double.parseDouble(s[3]),s[4],Integer.parseInt(s[5]),s[6]);
                     i++;
                 }
             } catch (FileNotFoundException e) {
@@ -28,5 +28,9 @@ public class FoodAccountsList {
     }
     public String getP(int i){
         return this.f[i].password;
+    }
+    public static void main(String[] args){
+        FoodAccountsList a = new FoodAccountsList();
+        System.out.println(a.count); 
     }   
 }
