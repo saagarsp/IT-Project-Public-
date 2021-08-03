@@ -1,7 +1,11 @@
 import java.io.Console;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 public class FoodAccount {
     Scanner scan = new Scanner(System.in);
+    int accNumber;
     String userId;
     String password;
     int cov;
@@ -10,6 +14,7 @@ public class FoodAccount {
     String city;
 
     public  FoodAccount() {
+        this.accNumber = 0;
         this.userId = "null";
         this.password = "null";
         this.phoneno = 0;
@@ -18,7 +23,8 @@ public class FoodAccount {
         this.city = "null";
     }
 
-    public FoodAccount(String userId,String password,double phoneno,String address,int cov,String city){
+    public FoodAccount(int accNumber,String userId,String password,double phoneno,String address,int cov,String city){
+        this.accNumber = accNumber;
         this.userId = userId;
         this.password = password;
         this.phoneno = phoneno;
@@ -29,6 +35,7 @@ public class FoodAccount {
     
     public FoodAccount newAccount(){
         FoodAccountsList p = new FoodAccountsList();
+        this.accNumber = (p.count + 1);
         System.out.print("Enter your userID : ");
         this.userId = scan.nextLine();
         for(int i = 0; i < p.count; i++)
@@ -61,9 +68,19 @@ public class FoodAccount {
         System.out.print("Enter the city of your residence : ");
         this.city = scan.nextLine();
         
-        p.f[p.count] = new FoodAccount(this.userId,this.password,this.phoneno,this.address,this.cov,this.city);
+        p.f[p.count] = new FoodAccount(this.accNumber,this.userId,this.password,this.phoneno,this.address,this.cov,this.city);
         System.out.println("\n\n\t\t\t\t\tYour account has been registered. ");
-        return new FoodAccount(this.userId,this.password,this.phoneno,this.address,this.cov,this.city);
+        File f = new File("accounts.txt");
+        try {
+            String str = "\n" + this.accNumber + ":" + this.userId + ":" + this.password + ":" + this.phoneno + ":" + this.address + ":" + this.cov + ":" + this.city ;
+            FileWriter fw = new FileWriter(f,true);
+            fw.write(str);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return new FoodAccount(this.accNumber,this.userId,this.password,this.phoneno,this.address,this.cov,this.city);
     }
     public FoodAccount existingAccount(){
         FoodAccountsList p = new FoodAccountsList();
@@ -95,7 +112,7 @@ public class FoodAccount {
         return p.f[j];
     }
     public FoodAccount start(){
-        FoodAccount q = new FoodAccount("sdw","def",958485522,"43 afhindfr",2,"ahm");
+        FoodAccount q = new FoodAccount(4,"sdw","def",958485522,"43 afhindfr",2,"ahm");
         System.out.println("\n\n\t\t\t\t\t Welcome to Foomato\n\n");
         System.out.println("\t\t1] New User(Sign up)\t\t\t\t 2] Existing user(log in)");
         Console console = System.console();
