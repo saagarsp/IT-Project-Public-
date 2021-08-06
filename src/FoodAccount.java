@@ -72,7 +72,7 @@ public class FoodAccount {
         System.out.println("\n\n\t\t\t\t\tYour account has been registered. ");
         File f = new File("accounts.txt");
         try {
-            String str = "\n" + this.accNumber + ":" + this.userId + ":" + this.password + ":" + this.phoneno + ":" + this.address + ":" + this.cov + ":" + this.city ;
+            String str = this.accNumber + ":" + this.userId + ":" + this.password + ":" + this.phoneno + ":" + this.address + ":" + this.cov + ":" + this.city + "\n";
             FileWriter fw = new FileWriter(f,true);
             fw.write(str);
             fw.close();
