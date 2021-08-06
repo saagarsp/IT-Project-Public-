@@ -1,12 +1,50 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Reservation {
 	
 	static RestaurantList restDetails = new RestaurantList();
+	
+	
+	public Reservation()
+	{
+		File file = new File("reservationrecords.txt");
+    	Scanner myReader;
+    	try {
+			myReader = new Scanner(file);
+			while (myReader.hasNextLine()) {
+				String data = myReader.nextLine();
+				String[] sarr = data.split("\\|");
+				Restaurant r = restDetails.searchByName(sarr[0]);
+				int tableNo = Integer.parseInt(sarr[1]);
+				int reservationNum = Integer.parseInt(sarr[4]);
+				String[] stemp = sarr[2].split(":");
+				String[] etemp = sarr[3].split(":");
+
+				Time stime = new Time(Integer.parseInt(stemp[0]),Integer.parseInt(stemp[1]));
+				Time etime = new Time(Integer.parseInt(etemp[0]),Integer.parseInt(etemp[1]));
+				
+				r.tables[tableNo-1].startTime[reservationNum-1]=stime;
+				r.tables[tableNo-1].endTime[reservationNum-1]=etime;
+
+
+				
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+    
+	
+	
 
 	
 	public static void displayRestaurants(String city) {
-		Restaurant[] restau = restDetails.searchByLocaion(city);
+		Restaurant[] restau = restDetails.searchByLocation(city);
 		
 		for(int i = 0; i < restau.length; i++)
 		{
@@ -15,8 +53,9 @@ public class Reservation {
 		
 		
 	}
-	public static void reserve(Time st,Time et,Restaurant chosenRestaurant,FoodAccount use) {
+	public void reserve(Time st,Time et,Restaurant chosenRestaurant,FoodAccount use) {
 		
+		String finame = "reservationrecords.txt";
 		boolean ifSuccessful =false;
 
 		
@@ -36,6 +75,16 @@ public class Reservation {
 					System.out.println("Table found,your reservation was successful");
 					System.out.println("Table number = "+(i+1)+"\nStart Time = "+st+"\nEnd Time = "+et);
 					ifSuccessful=true;
+					
+					String reslt = chosenRestaurant.name+"|"+(i+1)+"|"+st.toString()+"|"+et.toString()+"|"+noOfReservations;
+					 try {
+				            BufferedWriter out = new BufferedWriter(new FileWriter(finame,true));
+				            out.write(reslt+"\n");
+				            out.close();
+				        }
+				        catch (IOException e) {
+				            System.out.println("Exception Occurred" + e);
+				        }
 
 				}
 				else
@@ -62,7 +111,7 @@ public class Reservation {
 	}
 	
 	
-	public static void start(FoodAccount user) {
+	public void start(FoodAccount user) {
 		
 		int choice;
 		
@@ -117,7 +166,7 @@ public class Reservation {
 			if(choice==1)
 			{
 				displayRestaurants(user.city);
-				Restaurant[] restInCity = restDetails.searchByLocaion(user.city);
+				Restaurant[] restInCity = restDetails.searchByLocation(user.city);
 				System.out.println("choose restuarant");
 				choice = scan.nextInt();
 				chosen  = restInCity[choice-1];
@@ -148,7 +197,7 @@ public class Reservation {
 				String city;
 				city=scan.nextLine();
 				displayRestaurants(city);
-				Restaurant[] restInCity = restDetails.searchByLocaion(city);
+				Restaurant[] restInCity = restDetails.searchByLocation(city);
 				System.out.println("choose restuarant");
 				choice = scan.nextInt();
 				chosen  = restInCity[choice-1];
@@ -179,6 +228,7 @@ public class Reservation {
 			
 		}
 		
+		scan.close();
 		
 	}
 
