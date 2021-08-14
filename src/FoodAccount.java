@@ -1,6 +1,9 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.Scanner;
 public class FoodAccount {
     Scanner scan = new Scanner(System.in);
@@ -11,6 +14,8 @@ public class FoodAccount {
     String address;
     double phoneno;
     String city;
+    String[] cart = new String[1000];
+    Date timeOrdered;
 
     public  FoodAccount() {
         this.accNumber = 0;
@@ -20,6 +25,30 @@ public class FoodAccount {
         this.address ="null";
         this.cov = 0;
         this.city = "null";
+        this.timeOrdered = new Date();
+        String filename = "cart.txt";
+        int found = 0;
+        File myObj = new File(filename);
+        Scanner myReader;
+        try {
+            myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String[] s = data.split(":");
+                if (Integer.parseInt(s[0]) == this.accNumber) {
+                    for (int i = 1; i < s.length; i++) {
+                        this.cart[i - 1] = s[i];
+                    }
+                    found = 1;
+                }
+            }
+            if (found == 0) {
+                Arrays.fill(this.cart, null);
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public FoodAccount(int accNumber,String userId,String password,double phoneno,String address,int cov,String city){
@@ -30,6 +59,30 @@ public class FoodAccount {
         this.address = address;
         this.cov = cov;
         this.city = city;
+        this.timeOrdered = new Date();
+        String filename = "cart.txt";
+        int found = 0;
+        File myObj = new File(filename);
+        Scanner myReader;
+        try {
+            myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String[] s = data.split(":");
+                if (Integer.parseInt(s[0]) == this.accNumber) {
+                    for (int i = 1; i < s.length; i++) {
+                        this.cart[i - 1] = s[i];
+                    }
+                    found = 1;
+                }
+            }
+            if (found == 0) {
+                Arrays.fill(this.cart, null);
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     
     public FoodAccount newAccount(){

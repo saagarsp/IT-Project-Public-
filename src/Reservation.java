@@ -10,8 +10,7 @@ public class Reservation {
 	static RestaurantList restDetails = new RestaurantList();
 	
 	
-	public Reservation()
-	{
+	public Reservation() {
 		File file = new File("reservationrecords.txt");
     	Scanner myReader;
     	try {
