@@ -5,9 +5,5 @@ public class Table {
 	int tableNo;
 	Time[] startTime =  new Time[100];
 	Time[] endTime = new Time[100];
-	
-	
-	
-	
 
 }
