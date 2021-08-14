@@ -40,29 +40,37 @@ public class Reservation {
     
 	
 	
-
-	
-	public static void displayRestaurants(String city) {
-		Restaurant[] restau = restDetails.searchByLocation(city);
-		
-		for(int i = 0; i < restau.length; i++)
-		{
-			System.out.println((i + 1) +  ": " + restau[i]);
-		}
-		
-		
-	}
 	public void reserve(Time st,Time et,Restaurant chosenRestaurant,FoodAccount use) {
 		
 		String finame = "reservationrecords.txt";
 		boolean ifSuccessful =false;
-
 		
 		System.out.println("checking for vacant tables..");
 		for(int i = 0;i<4;i++)
 		{
 			int noOfReservations=chosenRestaurant.tables[i].reservations;
 
+			if(noOfReservations==0) {
+				noOfReservations++;
+				chosenRestaurant.tables[i].startTime[noOfReservations]=st;
+				chosenRestaurant.tables[i].endTime[noOfReservations]=et;
+				chosenRestaurant.tables[i].reservations++;
+				System.out.println("Table found,your reservation was successful");
+				System.out.println("Table number = "+(i+1)+"\nStart Time = "+st+"\nEnd Time = "+et);
+				ifSuccessful=true;
+				
+				String reslt = chosenRestaurant.name+"|"+(i+1)+"|"+st.toString()+"|"+et.toString()+"|"+noOfReservations;
+				 try {
+			            BufferedWriter out = new BufferedWriter(new FileWriter(finame,true));
+			            out.write(reslt+"\n");
+			            out.close();
+			        }
+			        catch (IOException e) {
+			            System.out.println("Exception Occurred" + e);
+			        }
+
+			}
+			
 			for(int j=0;j<noOfReservations;j++)
 			{
 				if(Time.intersects(chosenRestaurant.tables[i].startTime[j], chosenRestaurant.tables[i].endTime[j], st, et)==false)
@@ -114,16 +122,15 @@ public class Reservation {
 		
 		int choice;
 		
-		Scanner scan = new Scanner(System.in);
-		Restaurant chosen = new Restaurant(null, null, null, null, 0, null, null, null);
+		Restaurant chosen = new Restaurant(null, null, null, null, 0, null, null, null, null);
 		
 		System.out.println("1]Search restaurant 2]Search by location");
-		choice = scan.nextInt();
+		choice = StdIn.readInt();
 		if(choice==1) 
 		{
 			String resname,searchResult;
 			System.out.println("Enter restaurant name");
-			resname=scan.nextLine();
+			resname=StdIn.readString();
 			searchResult= restDetails.byName(resname);
 			System.out.println(searchResult);
 			if(searchResult.equals("Not Found"))
@@ -139,13 +146,13 @@ public class Reservation {
 			String inp1,inp2;
 			String[] temp;
 			int hour,min;
-			inp1 = scan.nextLine();
+			inp1 = StdIn.readString();
 			temp = inp1.split(":");
 			hour = Integer.parseInt(temp[0]);
 			min = Integer.parseInt(temp[1]);
 			starttime = new Time(hour,min);
 			
-			inp2 = scan.nextLine();
+			inp2 = StdIn.readString();
 			temp = inp2.split(":");
 			hour = Integer.parseInt(temp[0]);
 			min = Integer.parseInt(temp[1]);
@@ -161,26 +168,26 @@ public class Reservation {
 			
 			System.out.println("Search by location: 1]My city 2]Enter location");
 			
-			choice= scan.nextInt();
+			choice= StdIn.readInt();
 			if(choice==1)
 			{
-				displayRestaurants(user.city);
 				Restaurant[] restInCity = restDetails.searchByLocation(user.city);
+				RestaurantList.printRes(restInCity);
 				System.out.println("choose restuarant");
-				choice = scan.nextInt();
+				choice = StdIn.readInt();
 				chosen  = restInCity[choice-1];
 				Time starttime,endtime;
 				System.out.println("Enter start time and end time for your reservation (HH:MM)");
 				String inp1,inp2;
 				String[] temp;
 				int hour,min;
-				inp1 = scan.nextLine();
+				inp1 = StdIn.readString();
 				temp = inp1.split(":");
 				hour = Integer.parseInt(temp[0]);
 				min = Integer.parseInt(temp[1]);
 				starttime = new Time(hour,min);
 				
-				inp2 = scan.nextLine();
+				inp2 = StdIn.readString();
 				temp = inp2.split(":");
 				hour = Integer.parseInt(temp[0]);
 				min = Integer.parseInt(temp[1]);
@@ -194,24 +201,24 @@ public class Reservation {
 			if(choice==2)
 			{
 				String city;
-				city=scan.nextLine();
-				displayRestaurants(city);
+				city=StdIn.readString();
 				Restaurant[] restInCity = restDetails.searchByLocation(city);
+				RestaurantList.printRes(restInCity);
 				System.out.println("choose restuarant");
-				choice = scan.nextInt();
+				choice = StdIn.readInt();
 				chosen  = restInCity[choice-1];
 				Time starttime,endtime;
 				System.out.println("Enter start time and end time for your reservation (HH:MM)");
 				String inp1,inp2;
 				String[] temp;
 				int hour,min;
-				inp1 = scan.nextLine();
+				inp1 = StdIn.readString();
 				temp = inp1.split(":");
 				hour = Integer.parseInt(temp[0]);
 				min = Integer.parseInt(temp[1]);
 				starttime = new Time(hour,min);
 				
-				inp2 = scan.nextLine();
+				inp2 = StdIn.readString();
 				temp = inp2.split(":");
 				hour = Integer.parseInt(temp[0]);
 				min = Integer.parseInt(temp[1]);
@@ -226,8 +233,6 @@ public class Reservation {
 			}
 			
 		}
-		
-		scan.close();
 		
 	}
 

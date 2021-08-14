@@ -9,10 +9,10 @@ public class Restaurant {
 	private final String timing;
 	private String review;
 	final Menu menu;
-	Table[] tables= new Table[4];
+	Table[] tables;
 
 	
-	public Restaurant(String a, String[] b, String p, String e, double r, String c, String d, Menu m) {
+	public Restaurant(String a, String[] b, String p, String e, double r, String c, String d, Menu m, Table[] t) {
 		name = a;
 		address = b;
 		city = p;
@@ -21,6 +21,7 @@ public class Restaurant {
 		timing = c;
 		review = d;
 		menu = m;
+		tables = t;
 	}
 	
 	public String[] getAddress() {
