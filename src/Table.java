@@ -1,6 +1,3 @@
-
-
-
 public class Table {
 	int reservations=0;
 	int tableNo;
@@ -12,5 +9,11 @@ public class Table {
 	{
 		startTime[reservations] = st;
 		endTime[reservations]=et;
+	}
+
+	public Table()
+	{
+		startTime[reservations] = null;
+		endTime[reservations] = null;
 	}
 }
