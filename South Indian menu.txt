@@ -1,25 +1,24 @@
-Idli
-Plain Dosa
-Masala Dosa
-Rava Dosa
-Mysore Dosa
-Cheese Dosa
-Onion Dosa
-Garlic Dosa
-Spring Dosa
-Parata
-Uttappam
-Onion Uttappam
-Egg Uttappam
-Egg Roast
-Nehi Roast
-Roast Mutta Parata
-Veech Parata
-Egg Veech Parata;omelet
-Half Boil
-Kalki / Loose Boil
-Full Boil
-Mutta Porial
-Puri
-Pongal
-Khichidi
+1. Plain Dosa
+2. Masala Dosa
+3. Rava Dosa
+4. Mysore Dosa
+5. Cheese Dosa
+6. Onion Dosa
+7. Garlic Dosa
+8. Spring Dosa
+9. Parata
+10. Uttappam
+11. Onion Uttappam
+12. Egg Uttappam
+13. Egg Roast
+14. Nehi Roast
+15. Roast Mutta Parata
+16. Veech Parata
+17. Egg Veech Parata;omelet
+18. Half Boil
+19. Kalki / Loose Boil
+20. Full Boil
+21. Mutta Porial
+22. Puri
+23. Pongal
+24. Khichidi

@@ -1,24 +1,24 @@
-Munchow Soup
-Hot & Sour Sou
-;Chilly Paneer Dry
-Veg. Manchurian Dry
-Papad
-Tandoori Paneer Tikka
-Hare-Bhare Kabab
-Tandoori Chicken
-Shahi Paneer
-Paneer Butter Masala
-Malai Kofta
-Dal Makhani
-Butter Roti
-Butter Naan
-Garlic Naan
-Tawa Parantha
-Laccha Parantha
-Stuffed Kulcha
-Stuffed Kulcha
-Steam Rice
-Soya Dum Biryani
-Veg. Pulao
-Chicken Biryani
-Hyderabadi Biryani
+1. Hot & Sour Sou
+2. Chilly Paneer Dry
+3. Veg. Manchurian Dry
+4. Papad
+5. Tandoori Paneer Tikka
+6. Hare-Bhare Kabab
+7. Tandoori Chicken
+8. Shahi Paneer
+9. Paneer Butter Masala
+10. Malai Kofta
+11. Dal Makhani
+12. Butter Roti
+13. Butter Naan
+14. Garlic Naan
+15. Tawa Parantha
+16. Laccha Parantha
+17. Stuffed Kulcha
+18. Stuffed Kulcha
+19. Steam Rice
+20. Soya Dum Biryani
+21. Veg. Pulao
+22. Chicken Biryani
+23. Hyderabadi Biryani
+24. Shahi Biryani

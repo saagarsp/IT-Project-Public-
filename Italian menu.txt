@@ -1,17 +1,24 @@
-Focaccia Bread
-Bruschetta Bread
-RavioliRisotto
-Penne Pasta
-Alfredo Pasta
-Bolognese Pasta
-Pesto Pasta
-Tortellini Pasta
-Gnocchi Pasta
-Pasta with Mac & Cheese
-Spaghetti
-Cheese Lasagne
-Margherita Pizza
-Deluxe Veggie Pizza
-Chicken Pizza
-Classic Naples Pizza
-Summer Special Pizza
+1. Bruschetta Bread
+2. RavioliRisotto
+3. Penne Pasta
+4. Alfredo Pasta
+5. Bolognese Pasta
+6. Pesto Pasta
+7. Tortellini Pasta
+8. Gnocchi Pasta
+9. Pasta with Mac & Cheese
+10. Spaghetti
+11. Cheese Lasagne
+12. Margherita Pizza
+13. Deluxe Veggie Pizza
+14. Chicken Pizza
+15. Classic Naples Pizza
+16. Summer Special Pizza
+17. Pizza Napoletana 
+18. Lasagna 
+19. Ossobuco alla Milanese 
+20. Gelato 
+21. Panzanella
+22. Focaccia
+23. Spaghetti alla Carbonara
+24. Cicchetti
