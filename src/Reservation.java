@@ -18,6 +18,10 @@ public class Reservation {
 			while (myReader.hasNextLine()) {
 				String data = myReader.nextLine();
 				String[] sarr = data.split("\\|");
+				
+				if (sarr.length != 5)
+					continue;
+				
 				Restaurant r = restDetails.searchByName(sarr[0]);
 				int tableNo = Integer.parseInt(sarr[1]);
 				int reservationNum = Integer.parseInt(sarr[4]);
@@ -27,8 +31,14 @@ public class Reservation {
 				Time stime = new Time(Integer.parseInt(stemp[0]),Integer.parseInt(stemp[1]));
 				Time etime = new Time(Integer.parseInt(etemp[0]),Integer.parseInt(etemp[1]));
 				
+				if(r.tables[tableNo-1]==null)
+				{
+					r.tables[tableNo-1]=new Table(stime,etime);
+				}	
+				
 				r.tables[tableNo-1].startTime[reservationNum-1]=stime;
 				r.tables[tableNo-1].endTime[reservationNum-1]=etime;
+				r.tables[tableNo-1].reservations=reservationNum;
 
 
 				
@@ -44,22 +54,21 @@ public class Reservation {
 		
 		String finame = "reservationrecords.txt";
 		boolean ifSuccessful =false;
+
 		
 		System.out.println("checking for vacant tables..");
 		for(int i = 0;i<4;i++)
 		{
-			int noOfReservations=chosenRestaurant.tables[i].reservations;
-
-			if(noOfReservations==0) {
-				noOfReservations++;
-				chosenRestaurant.tables[i].startTime[noOfReservations]=st;
-				chosenRestaurant.tables[i].endTime[noOfReservations]=et;
+			if(chosenRestaurant.tables[i]==null)
+			{
+				chosenRestaurant.tables[i]=new Table(st,et);
+				
 				chosenRestaurant.tables[i].reservations++;
 				System.out.println("Table found,your reservation was successful");
 				System.out.println("Table number = "+(i+1)+"\nStart Time = "+st+"\nEnd Time = "+et);
 				ifSuccessful=true;
 				
-				String reslt = chosenRestaurant.name+"|"+(i+1)+"|"+st.toString()+"|"+et.toString()+"|"+noOfReservations;
+				String reslt = chosenRestaurant.name+"|"+(i+1)+"|"+st.toString()+"|"+et.toString()+"|"+chosenRestaurant.tables[i].reservations;
 				 try {
 			            BufferedWriter out = new BufferedWriter(new FileWriter(finame,true));
 			            out.write(reslt+"\n");
@@ -68,14 +77,19 @@ public class Reservation {
 			        catch (IOException e) {
 			            System.out.println("Exception Occurred" + e);
 			        }
+				 break;
 
 			}
 			
-			for(int j=0;j<noOfReservations;j++)
+			int noOfReservations=chosenRestaurant.tables[i].reservations;
+			
+			
+
+			for(int j=0;j<=noOfReservations;j++)
 			{
 				if(Time.intersects(chosenRestaurant.tables[i].startTime[j], chosenRestaurant.tables[i].endTime[j], st, et)==false)
 				{
-					noOfReservations++;
+					//noOfReservations++;
 					chosenRestaurant.tables[i].startTime[noOfReservations]=st;
 					chosenRestaurant.tables[i].endTime[noOfReservations]=et;
 					chosenRestaurant.tables[i].reservations++;
@@ -83,7 +97,7 @@ public class Reservation {
 					System.out.println("Table number = "+(i+1)+"\nStart Time = "+st+"\nEnd Time = "+et);
 					ifSuccessful=true;
 					
-					String reslt = chosenRestaurant.name+"|"+(i+1)+"|"+st.toString()+"|"+et.toString()+"|"+noOfReservations;
+					String reslt = chosenRestaurant.name+"|"+(i+1)+"|"+st.toString()+"|"+et.toString()+"|"+chosenRestaurant.tables[i].reservations;
 					 try {
 				            BufferedWriter out = new BufferedWriter(new FileWriter(finame,true));
 				            out.write(reslt+"\n");
@@ -92,6 +106,8 @@ public class Reservation {
 				        catch (IOException e) {
 				            System.out.println("Exception Occurred" + e);
 				        }
+					 
+					 return;
 
 				}
 				else
@@ -122,7 +138,7 @@ public class Reservation {
 		
 		int choice;
 		
-		Restaurant chosen = new Restaurant(null, null, null, null, 0, null, null, null, null);
+		Restaurant chosen = new Restaurant(null, null, null, null, 0, null, null, null);
 		
 		System.out.println("1]Search restaurant 2]Search by location");
 		choice = StdIn.readInt();
