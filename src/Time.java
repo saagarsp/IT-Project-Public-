@@ -1,4 +1,5 @@
 
+
 public class Time {
 	
 	private final int hour;
@@ -37,35 +38,10 @@ public class Time {
 	}
 	public static boolean intersects(Time st,Time et,Time st2,Time et2 )
 	{
-		if(st2.afterTime(st)&& et.afterTime(et2)) {
-			return true;
-		}
-		if(st2.afterTime(st)&&et.afterTime(st2)&&et2.afterTime(et))
-		{
-			return true;
-		}
-		if(st.afterTime(st2)&&et2.afterTime(st)&&et.afterTime(et2))
-		{
-			return true;
-		}
-		if(st.afterTime(st2)&&et2.afterTime(et))
-		{
-			return true;
-		}
-		if(st.sameTime(st2)&&et2.afterTime(et))
-		{
-			return true;
-		}
-		if(st.afterTime(st2)&& et.sameTime(et2))
-		{
-			return true;
-		}
-		if(st.sameTime(st2)&&et.sameTime(et2))
-		{
-			return true;
-		}
+		if (st.afterTime(et2) || st2.afterTime(et))
+			return false;
 		
-		return false;
+		return true;	
 	}
 	
 	public String toString(){
@@ -74,3 +50,4 @@ public class Time {
 	
 
 }
+
