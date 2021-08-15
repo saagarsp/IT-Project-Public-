@@ -1,5 +1,3 @@
-
-
 public class Time {
 	
 	private final int hour;
@@ -8,8 +6,8 @@ public class Time {
 	public Time(int hour, int min) {
 		this.hour=hour;
 		this.min = min;
-		
 	}
+
 	public boolean afterTime(Time t) {
 		if(this.hour>t.hour) {
 			return true;
@@ -26,8 +24,8 @@ public class Time {
 			return false;
 		}
 	}
-	public boolean sameTime(Time t1)
-	{
+
+	public boolean sameTime(Time t1) {
 		if(this.hour==t1.hour && this.min==t1.min)
 		{
 			return true;
@@ -36,8 +34,8 @@ public class Time {
 			return false;
 		}
 	}
-	public static boolean intersects(Time st,Time et,Time st2,Time et2 )
-	{
+
+	public static boolean intersects(Time st,Time et,Time st2,Time et2 ) {
 		if (st.afterTime(et2) || st2.afterTime(et))
 			return false;
 		
@@ -47,7 +45,5 @@ public class Time {
 	public String toString(){
 		return hour+":"+min;
 	}
-	
-
 }
 
