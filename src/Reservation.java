@@ -8,8 +8,7 @@ import java.util.Scanner;
 public class Reservation {
 	
 	static RestaurantList restDetails = new RestaurantList();
-	
-	
+
 	public Reservation() {
 		File file = new File("reservationrecords.txt");
     	Scanner myReader;
@@ -39,17 +38,12 @@ public class Reservation {
 				r.tables[tableNo-1].startTime[reservationNum-1]=stime;
 				r.tables[tableNo-1].endTime[reservationNum-1]=etime;
 				r.tables[tableNo-1].reservations=reservationNum;
-
-
-				
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-    
-	
-	
+
 	public void reserve(Time st,Time et,Restaurant chosenRestaurant,FoodAccount use) {
 		
 		String finame = "reservationrecords.txt";
@@ -117,8 +111,7 @@ public class Reservation {
 			start(use);
 		}
 	}
-	
-	
+
 	public void start(FoodAccount user) {
 		
 		int choice;
@@ -127,22 +120,22 @@ public class Reservation {
 		
 		System.out.println(" 1]Search restaurant \t\t\t\t 2]Search by location");
 		choice = StdIn.readInt();
-		if(choice==1) 
-		{
+		if(choice==1) {
 			String resname,searchResult;
 			System.out.println("Enter restaurant name");
 			resname=StdIn.readString();
 			searchResult= restDetails.byName(resname);
 			System.out.println(searchResult);
-			if(searchResult.equals("Not Found"))
-			{
+
+			if(searchResult.equals("Not Found")) {
 				start(user);
 			}
-			else
-			{
+
+			else {
 				chosen = restDetails.searchByName(resname);
 			}
-			Time starttime,endtime;
+
+			Time starttime, endtime;
 			System.out.println("Enter start time and end time for your reservation (HH:MM)");
 			String inp1,inp2;
 			String[] temp;
@@ -160,18 +153,13 @@ public class Reservation {
 			endtime = new Time(hour,min);
 			
 			reserve(starttime,endtime,chosen,user);
-			
-			
 		}
 		
-		if(choice==2) 
-		{
-			
+		if(choice==2) {
 			System.out.println("Search by location: 1]My city 2]Enter location");
 			
 			choice= StdIn.readInt();
-			if(choice==1)
-			{
+			if(choice==1) {
 				Restaurant[] restInCity = restDetails.searchByLocation(user.city);
 				RestaurantList.printRes(restInCity);
 				System.out.println("Choose restaurant\n");
@@ -195,12 +183,9 @@ public class Reservation {
 				endtime = new Time(hour,min);
 				
 				reserve(starttime,endtime,chosen,user);
-				
-				
-				
 			}
-			if(choice==2)
-			{
+
+			if(choice==2) {
 				String city;
 				city=StdIn.readString();
 				Restaurant[] restInCity = restDetails.searchByLocation(city);
@@ -226,15 +211,11 @@ public class Reservation {
 				endtime = new Time(hour,min);
 				
 				reserve(starttime,endtime,chosen,user);
-				
 			}
-			else 
-			{
+
+			else {
 				start(user);
 			}
-			
 		}
-		
 	}
-
 }

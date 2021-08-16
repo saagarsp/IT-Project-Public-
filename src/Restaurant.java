@@ -19,7 +19,6 @@ public class Restaurant {
 		timing = c;
 		review = d;
 		menu = m;
-//		
 	}
 	
 	public String[] getAddress() {
