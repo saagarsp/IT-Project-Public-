@@ -9,10 +9,6 @@ public class Details {
 	String[] timing = new String[1002];
 	String[] review = new String[1002];
 	Menu[] menus = new Menu[1002];
-<<<<<<< HEAD
-	//Table[][] tables = new Table[1002][4];
-	
-=======
 	Table[][] tables = new Table[1002][4];
 
 	public Details() {
@@ -27,7 +23,6 @@ public class Details {
 		tables = tableInitialization();
 	}
 
->>>>>>> 3ce3150f4bba3f89d67fbf9af278731b19da31f1
 	private String randomType() {
 		String[] typeString = {"Punjabi","Italian","Fastfood","South Indian"};
 
@@ -60,13 +55,8 @@ public class Details {
 
 		return resMenus;
 	}
-<<<<<<< HEAD
-	
-	/*private Table[][] tableInisilization() {
-=======
 
 	private Table[][] tableInitialization() {
->>>>>>> 3ce3150f4bba3f89d67fbf9af278731b19da31f1
 		for(int i = 0; i<1002; i++) {
 			for(int j = 0; j<4; j++) {
 				this.tables[i][j] = new Table();
@@ -74,25 +64,8 @@ public class Details {
 		}
 
 		return this.tables;
-<<<<<<< HEAD
-	}*/
-	
-	public Details() {
-		names = ReadFile.readStrings("names.txt");
-		address = ReadFile.readAdd("addresses.txt");
-		rating = ReadFile.readDouble("ratings.txt");
-		city = ReadFile.readStrings("cities.txt");
-		timing = ReadFile.readStrings("timing.txt");
-		review = ReadFile.readStrings("review.txt");
-		type = typeReturn();
-		menus = returnMenu();
-		//tables = tableInisilization();
-	}
-	
-=======
 	}
 
->>>>>>> 3ce3150f4bba3f89d67fbf9af278731b19da31f1
 	public static void main(String[] args) {
 		
 		Details details = new Details();
