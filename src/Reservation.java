@@ -214,7 +214,7 @@ public class Reservation {
 				
 				
 			}
-			if(choice==2)
+			else if(choice==2)
 			{
 				String city;
 				city=StdIn.readString();

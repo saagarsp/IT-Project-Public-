@@ -18,6 +18,10 @@ public class FoodAccountsList {
                 while (myReader.hasNextLine()) {
                     String data = myReader.nextLine();
                     String[] s = data.split(":");
+                    if(s.length!=7)
+                    {
+                    	continue;
+                    }
                     this.list[i] = new FoodAccount(Integer.parseInt(s[0]),s[1],s[2],Double.parseDouble(s[3]),s[4],Integer.parseInt(s[5]),s[6]);
                     i++;
                 }
@@ -34,4 +38,9 @@ public class FoodAccountsList {
     public String getPassword(int i){
         return this.list[i].password;
     }
+    
+    public static void main(String[] args) {
+		FoodAccountsList list = new FoodAccountsList();
+		StdOut.print(list.getPassword(2));
+	}
 }
