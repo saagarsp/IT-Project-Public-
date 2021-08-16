@@ -23,7 +23,19 @@ public class Restaurant {
 		menu = m;
 		//tables = t;
 	}
-	
+
+	public Restaurant() {
+		name = null;
+		address = null;
+		city = null;
+		type = null;
+		rating = 0;
+		timing = null;
+		review = null;
+		menu = null;
+		tables = null;
+	}
+
 	public String[] getAddress() {
 		return this.address;
 	}
@@ -41,5 +53,4 @@ public class Restaurant {
 			return this.name;
 		return this.name + "\n" + this.rating + "\n" + this.type + "\n" ;
 	}
-	
 }

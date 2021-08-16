@@ -17,7 +17,7 @@ public class FoodAccount {
     double phoneno;
     String city;
     String[] cart = new String[1000];
-    Date timeOrdered;
+    String timeOrdered;
 
     public  FoodAccount() {
 
@@ -28,7 +28,6 @@ public class FoodAccount {
         this.address ="null";
         this.cov = 0;
         this.city = "null";
-        this.timeOrdered = new Date();
 
         String filename = "cart.txt";
         int found = 0;
@@ -38,10 +37,11 @@ public class FoodAccount {
             myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[] s = data.split(":");
+                String[] s = data.split(";");
                 if (Integer.parseInt(s[0]) == this.accNumber) {
-                    for (int i = 1; i < s.length; i++) {
-                        this.cart[i - 1] = s[i];
+                    this.timeOrdered = s[1];
+                    for (int i = 2; i < s.length; i++) {
+                        this.cart[i - 2] = s[i];
                     }
                     found = 1;
                 }
@@ -64,7 +64,7 @@ public class FoodAccount {
         this.address = address;
         this.cov = cov;
         this.city = city;
-        this.timeOrdered = new Date();
+        this.timeOrdered = null;
 
         String filename = "cart.txt";
         int found = 0;
@@ -74,10 +74,11 @@ public class FoodAccount {
             myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[] s = data.split(":");
+                String[] s = data.split(";");
                 if (Integer.parseInt(s[0]) == this.accNumber) {
-                    for (int i = 1; i < s.length; i++) {
-                        this.cart[i - 1] = s[i];
+                    this.timeOrdered = s[1];
+                    for (int i = 2; i < s.length; i++) {
+                        this.cart[i - 2] = s[i];
                     }
                     found = 1;
                 }
@@ -96,7 +97,7 @@ public class FoodAccount {
         FoodAccountsList list = new FoodAccountsList();
 
         this.accNumber = (list.count + 1);
-        System.out.print("Enter your userID : ");
+        System.out.print("\nEnter your userID : ");
         this.userId = scan.next();
 
         for(int i = 0; i < list.count; i++)
@@ -140,9 +141,9 @@ public class FoodAccount {
 
         File f = new File("accounts.txt");
         try {
-            String str = this.accNumber + ":" + this.userId + ":" + this.password + ":" + this.phoneno + ":" + this.address + ":" + this.cov + ":" + this.city + "\n";
+            String str = this.accNumber + ":" + this.userId + ":" + this.password + ":" + this.phoneno + ":" + this.address + ":" + this.cov + ":" + this.city;
             FileWriter fw = new FileWriter(f,true);
-            fw.write(str);
+            fw.write(str + "\n");
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -156,7 +157,7 @@ public class FoodAccount {
 
         FoodAccountsList list = new FoodAccountsList();
 
-        System.out.print("Enter your userID : ");
+        System.out.print("\nEnter your userID : ");
         this.userId = scan.next();
         boolean cond = false;
         int j;
@@ -196,7 +197,7 @@ public class FoodAccount {
         
         System.out.println("\n\n\t\t\t\t\t Welcome to Foomato\n\n");
 
-        System.out.println("\t\t1] New User(Sign up)\t\t\t\t 2] Existing user(log in)");
+        System.out.println("1] New User(Sign up)\t\t\t 2] Existing user(log in)\n");
 
         int input = scan.nextInt();
 
@@ -206,13 +207,7 @@ public class FoodAccount {
         sample = existingAccount();
         else
         System.out.println("Please enter valid input");
-
-        System.out.println("\n\n\n Welcome " + this.userId + ", what can we do for you");
-
-        System.out.println("\n\n 1] Delivery \t\t\t\t 2] Dine-in \t\t\t\t 3] Takeaway \n\n");
-        
         return sample;
-
     }
 
 }
