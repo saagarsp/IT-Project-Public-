@@ -12,7 +12,7 @@ public class Restaurant {
 	Table[] tables;
 
 	
-	public Restaurant(String a, String[] b, String p, String e, double r, String c, String d, Menu m, Table[] t) {
+	public Restaurant(String a, String[] b, String p, String e, double r, String c, String d, Menu m /*Table[] t*/) {
 		name = a;
 		address = b;
 		city = p;
@@ -21,7 +21,7 @@ public class Restaurant {
 		timing = c;
 		review = d;
 		menu = m;
-		tables = t;
+		//tables = t;
 	}
 	
 	public String[] getAddress() {

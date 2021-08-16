@@ -8,7 +8,7 @@ public class RestaurantList extends Details{
 		super();
 		Restaurant[] res = new Restaurant[1002];
 		for(int i = 0; i<1002; i++) {
-			res[i] = new Restaurant(names[i], address[i], city[i], type[i], rating[i], timing[i], review[i], menus[i], tables[i]);
+			res[i] = new Restaurant(names[i], address[i], city[i], type[i], rating[i], timing[i], review[i], menus[i]/*, tables[i]*/);
 		}
 		restaurants = res;
 	}
@@ -42,7 +42,7 @@ public class RestaurantList extends Details{
 			if(this.restaurants[i].name.equals(s))
 				return this.restaurants[i];
 		}
-		return new Restaurant("Not Found", null, null, null, 0, null, null, null, null);
+		return new Restaurant("Not Found", null, null, null, 0, null, null, null);
 	}
 	
 	public String byName(String s) {
