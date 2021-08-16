@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class Reservation {
 	
 	static RestaurantList restDetails = new RestaurantList();
-
+	
+	
 	public Reservation() {
 		File file = new File("reservationrecords.txt");
     	Scanner myReader;
@@ -46,7 +47,9 @@ public class Reservation {
 			e.printStackTrace();
 		}
 	}
-
+    
+	
+	
 	public void reserve(Time st,Time et,Restaurant chosenRestaurant,FoodAccount use) {
 		
 		String finame = "reservationrecords.txt";
@@ -75,12 +78,9 @@ public class Reservation {
 			            System.out.println("Exception Occurred" + e);
 			        }
 				 break;
-
 			}
-			
+
 			int noOfReservations=chosenRestaurant.tables[i].reservations;
-			
-			
 
 			for(int j=0;j<=noOfReservations;j++)
 			{
@@ -103,40 +103,29 @@ public class Reservation {
 				        catch (IOException e) {
 				            System.out.println("Exception Occurred" + e);
 				        }
-					 
 					 return;
-
 				}
 				else
 				{
 					break;
 				}
-				
-		
-	
 			}
-			
 		}
-		
 		if(ifSuccessful==false)
 		{
 			System.out.println("All tables are full");
 			start(use);
 		}
-		
-		
-		
-		
-		
 	}
-
+	
+	
 	public void start(FoodAccount user) {
 		
 		int choice;
 		
-		Restaurant chosen = new Restaurant();
+		Restaurant chosen = new Restaurant(null, null, null, null, 0, null, null, null);
 		
-		System.out.println("1]Search restaurant 2]Search by location");
+		System.out.println(" 1]Search restaurant \t\t\t\t 2]Search by location");
 		choice = StdIn.readInt();
 		if(choice==1) 
 		{
@@ -185,11 +174,11 @@ public class Reservation {
 			{
 				Restaurant[] restInCity = restDetails.searchByLocation(user.city);
 				RestaurantList.printRes(restInCity);
-				System.out.println("choose restuarant");
+				System.out.println("Choose restaurant\n");
 				choice = StdIn.readInt();
 				chosen  = restInCity[choice-1];
 				Time starttime,endtime;
-				System.out.println("Enter start time and end time for your reservation (HH:MM)");
+				System.out.println("\nEnter start time and end time for your reservation (HH:MM)");
 				String inp1,inp2;
 				String[] temp;
 				int hour,min;
@@ -247,4 +236,5 @@ public class Reservation {
 		}
 		
 	}
+
 }

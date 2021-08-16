@@ -8,7 +8,8 @@ public class RestaurantList extends Details{
 		super();
 		Restaurant[] res = new Restaurant[1002];
 		for(int i = 0; i<1002; i++) {
-			res[i] = new Restaurant(names[i], address[i], city[i], type[i], rating[i], timing[i], review[i], menus[i], tables[i]);
+			res[i] = new Restaurant(names[i], address[i], city[i], type[i], rating[i], timing[i], review[i], menus[i]);
+			
 		}
 		restaurants = res;
 	}
@@ -42,12 +43,12 @@ public class RestaurantList extends Details{
 			if(this.restaurants[i].name.equals(s))
 				return this.restaurants[i];
 		}
-		return new Restaurant("Not Found", null, null, null, 0, null, null, null, null);
+		return new Restaurant("Not Found", null, null, null, 0, null, null, null);
 	}
 	
 	public String byName(String s) {
 		for(int i = 0; i<1002; i++) {
-			if(this.restaurants[i].name.equals(s))
+			if(this.restaurants[i].name.equalsIgnoreCase(s))
 				return this.restaurants[i].toString();
 		}
 		return "Not Found";
@@ -59,9 +60,8 @@ public class RestaurantList extends Details{
 		ArrayList<Restaurant> list3 = new ArrayList<Restaurant>();
 		ArrayList<Restaurant> list4 = new ArrayList<Restaurant>();
 		String[] type = {"Punjabi","Italian","Fastfood","South Indian"};
-		System.out.println();
 		for(int i = 0; i<4; i++) {
-			StdOut.println("Press "+(int)(i+1)+" for "+type[i]);
+			StdOut.println("Press: "+(int)(i+1)+"."+type[i]);
 		}
 		for(int i = 0; i<1002; i++) {
 			if(this.restaurants[i].type.equals(type[0]))
@@ -86,8 +86,6 @@ public class RestaurantList extends Details{
 		
 		Restaurant[] resByType4 = new Restaurant[list4.size()];
 		resByType4 = list4.toArray(resByType4);
-
-		System.out.println();
 		
 		int n = StdIn.readInt();
 		if(n==1)
@@ -107,4 +105,17 @@ public class RestaurantList extends Details{
 			i++;
 		}
 	}
+	
+	public static void main(String[] args) {
+		RestaurantList res = new RestaurantList();
+		//Restaurant[] restaurants = res.searchByType();
+		//printRes(restaurants);
+		//res.searchByName("The Dapper Palace").menu.displayMenu();
+		//StdOut.println(res.searchByName("Blabla"));
+		//StdOut.println(res.byRating(3)[0]);
+		//printRes(res.byLocaion(123456));
+		//String s = res.byName("Souls");
+		//System.out.println(s);
+	}
+
 }

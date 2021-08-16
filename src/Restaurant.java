@@ -1,4 +1,3 @@
-
 public class Restaurant {
 
 	final String name;
@@ -9,10 +8,9 @@ public class Restaurant {
 	private final String timing;
 	private String review;
 	final Menu menu;
-	Table[] tables;
+	Table[] tables= new Table[4];
 
-	
-	public Restaurant(String a, String[] b, String p, String e, double r, String c, String d, Menu m, Table[] t) {
+	public Restaurant(String a, String[] b, String p, String e, double r, String c, String d, Menu m) {
 		name = a;
 		address = b;
 		city = p;
@@ -21,21 +19,9 @@ public class Restaurant {
 		timing = c;
 		review = d;
 		menu = m;
-		tables = t;
+//		
 	}
-
-	public Restaurant() {
-		name = null;
-		address = null;
-		city = null;
-		type = null;
-		rating = 0;
-		timing = null;
-		review = null;
-		menu = null;
-		tables = null;
-	}
-
+	
 	public String[] getAddress() {
 		return this.address;
 	}
@@ -53,4 +39,5 @@ public class Restaurant {
 			return this.name;
 		return this.name + "\n" + this.rating + "\n" + this.type + "\n" ;
 	}
+	
 }
