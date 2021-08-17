@@ -39,9 +39,6 @@ public class Reservation {
 				r.tables[tableNo-1].startTime[reservationNum-1]=stime;
 				r.tables[tableNo-1].endTime[reservationNum-1]=etime;
 				r.tables[tableNo-1].reservations=reservationNum;
-
-
-				
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -78,12 +75,9 @@ public class Reservation {
 			            System.out.println("Exception Occurred" + e);
 			        }
 				 break;
-
 			}
-			
+
 			int noOfReservations=chosenRestaurant.tables[i].reservations;
-			
-			
 
 			for(int j=0;j<=noOfReservations;j++)
 			{
@@ -106,31 +100,19 @@ public class Reservation {
 				        catch (IOException e) {
 				            System.out.println("Exception Occurred" + e);
 				        }
-					 
 					 return;
-
 				}
 				else
 				{
 					break;
 				}
-				
-		
-	
 			}
-			
 		}
-		
 		if(ifSuccessful==false)
 		{
 			System.out.println("All tables are full");
 			start(use);
 		}
-		
-		
-		
-		
-		
 	}
 	
 	
@@ -140,24 +122,24 @@ public class Reservation {
 		
 		Restaurant chosen = new Restaurant(null, null, null, null, 0, null, null, null);
 		
-		System.out.println("1]Search restaurant 2]Search by location");
+		System.out.println(" 1]Search restaurant \t\t\t\t 2]Search by location");
 		choice = StdIn.readInt();
-		if(choice==1) 
-		{
+		if(choice==1) {
 			String resname,searchResult;
 			System.out.println("Enter restaurant name");
 			resname=StdIn.readString();
 			searchResult= restDetails.byName(resname);
 			System.out.println(searchResult);
-			if(searchResult.equals("Not Found"))
-			{
+
+			if(searchResult.equals("Not Found")) {
 				start(user);
 			}
-			else
-			{
+
+			else {
 				chosen = restDetails.searchByName(resname);
 			}
-			Time starttime,endtime;
+
+			Time starttime, endtime;
 			System.out.println("Enter start time and end time for your reservation (HH:MM)");
 			String inp1,inp2;
 			String[] temp;
@@ -175,25 +157,20 @@ public class Reservation {
 			endtime = new Time(hour,min);
 			
 			reserve(starttime,endtime,chosen,user);
-			
-			
 		}
 		
-		if(choice==2) 
-		{
-			
+		if(choice==2) {
 			System.out.println("Search by location: 1]My city 2]Enter location");
 			
 			choice= StdIn.readInt();
-			if(choice==1)
-			{
+			if(choice==1) {
 				Restaurant[] restInCity = restDetails.searchByLocation(user.city);
 				RestaurantList.printRes(restInCity);
-				System.out.println("choose restuarant");
+				System.out.println("Choose restaurant\n");
 				choice = StdIn.readInt();
 				chosen  = restInCity[choice-1];
 				Time starttime,endtime;
-				System.out.println("Enter start time and end time for your reservation (HH:MM)");
+				System.out.println("\nEnter start time and end time for your reservation (HH:MM)");
 				String inp1,inp2;
 				String[] temp;
 				int hour,min;
@@ -210,9 +187,6 @@ public class Reservation {
 				endtime = new Time(hour,min);
 				
 				reserve(starttime,endtime,chosen,user);
-				
-				
-				
 			}
 			else if(choice==2)
 			{
@@ -241,15 +215,12 @@ public class Reservation {
 				endtime = new Time(hour,min);
 				
 				reserve(starttime,endtime,chosen,user);
-				
 			}
-			else 
-			{
+
+			else {
 				start(user);
 			}
-			
 		}
-		
 	}
 
 }

@@ -8,6 +8,17 @@ public class Details {
 	String[] timing = new String[1002];
 	String[] review = new String[1002];
 	Menu[] menus = new Menu[1002];
+
+	public Details() {
+		names = ReadFile.readStrings("names.txt");
+		address = ReadFile.readAdd("addresses.txt");
+		rating = ReadFile.readDouble("ratings.txt");
+		city = ReadFile.readStrings("cities.txt");
+		timing = ReadFile.readStrings("timing.txt");
+		review = ReadFile.readStrings("review.txt");
+		type = typeReturn();
+		menus = returnMenu();
+	}
 	
 	private String randomType() {
 		String[] typeString = {"Punjabi","Italian","Fastfood","South Indian"};
@@ -42,17 +53,6 @@ public class Details {
 		return resMenus;
 	}
 	
-	public Details() {
-		names = ReadFile.readStrings("names.txt");
-		address = ReadFile.readAdd("addresses.txt");
-		rating = ReadFile.readDouble("ratings.txt");
-		city = ReadFile.readStrings("cities.txt");
-		timing = ReadFile.readStrings("timing.txt");
-		review = ReadFile.readStrings("review.txt");
-		type = typeReturn();
-		menus = returnMenu();
-	}
-	
 	public static void main(String[] args) {
 		
 		Details details = new Details();
@@ -60,8 +60,5 @@ public class Details {
 		for(int i = 0; i<10; i++) {
 			StdOut.println(details.randomType());
 		}
-		
-		
 	}
-
 }
