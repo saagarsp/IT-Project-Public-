@@ -28,10 +28,11 @@ public class Main {
             if (input == 1) {
                 System.out.println("\nEnter the city you want to search in:\n");
                 String city = StdIn.readString();
+                System.out.println();
                 Restaurant[] newList = resList.searchByLocation(city);
                 RestaurantList.printRes(newList);
                 System.out.println("Press the number corresponding to the restaurant to select it\n");
-                input = StdIn.readInt();
+                input = StdIn.readInt() - 1;
                 System.out.println();
                 restaurant = newList[input];
             }
@@ -39,10 +40,11 @@ public class Main {
             else if (input == 2) {
                 System.out.println("\nEnter the rating you want to search by (number from 0 - 5)\n");
                 double rating = StdIn.readDouble();
+                System.out.println();
                 Restaurant[] newList = resList.searchByRating(rating);
                 RestaurantList.printRes(newList);
                 System.out.println("Press the number corresponding to the restaurant to select it\n");
-                input = StdIn.readInt();
+                input = StdIn.readInt() - 1;
                 System.out.println();
                 restaurant = newList[input];
             }
@@ -51,13 +53,14 @@ public class Main {
                 Restaurant[] newList = resList.searchByType();
                 RestaurantList.printRes(newList);
                 System.out.println("Press the number corresponding to the restaurant to select it\n");
-                input = StdIn.readInt();
+                input = StdIn.readInt() - 1;
                 System.out.println();
                 restaurant = newList[input];
             }
 
             else if (input == 4) {
                 System.out.println("\nEnter the name of the restaurant\n");
+                System.out.println();
                 String name = StdIn.readString();
                 System.out.println();
                 restaurant = resList.searchByName(name);
