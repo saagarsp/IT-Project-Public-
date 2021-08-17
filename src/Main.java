@@ -8,8 +8,8 @@ public class Main {
         user = user.start();
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("\n\n Welcome " + user.userId + ", what can we do for you");
-        System.out.println("\n\n 1] Browse / review restaurants \t\t\t\t 2] Delivery / Takeaway \t\t\t\t 3] Reserve Tables \t\t\t\t 4] Check Delivery \t\t\t\t 5] Check Reservation\n");
+        System.out.println("\n\nWelcome " + user.userId + ", what can we do for you");
+        System.out.println("\n\n1] Browse / review restaurants \n2] Delivery / Takeaway \n3] Reserve Tables \n4] Check Delivery \n5] Check Reservation\n");
 
         int input = StdIn.readInt();
         Delivery delivery = new Delivery(user);
@@ -18,10 +18,10 @@ public class Main {
             Restaurant restaurant;
             RestaurantList resList = new RestaurantList();
 
-            System.out.println("\nPress 1 if you want to search by city");
-            System.out.println("Press 2 if you want to search by rating");
-            System.out.println("Press 3 if you want to search by type");
-            System.out.println("Press 4 if you want to search by name\n");
+            System.out.println("\n1] Search restaurant by city");
+            System.out.println("2] Search restaurant by rating");
+            System.out.println("3] Search restaurant by type");
+            System.out.println("4] Search restaurant by name\n");
 
             input = StdIn.readInt();
 

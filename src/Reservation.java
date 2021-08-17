@@ -8,8 +8,7 @@ import java.util.Scanner;
 public class Reservation {
 	
 	static RestaurantList restDetails = new RestaurantList();
-	
-	
+
 	public Reservation() {
 		File file = new File("reservationrecords.txt");
     	Scanner myReader;
@@ -44,24 +43,20 @@ public class Reservation {
 			e.printStackTrace();
 		}
 	}
-    
-	
 	
 	public void reserve(Time st,Time et,Restaurant chosenRestaurant,FoodAccount use) {
 		
 		String finame = "reservationrecords.txt";
 		boolean ifSuccessful =false;
 
-		
-		System.out.println("checking for vacant tables..");
 		for(int i = 0;i<4;i++)
 		{
 			if(chosenRestaurant.tables[i]==null)
 			{
 				chosenRestaurant.tables[i]=new Table(st,et);
-				
 				chosenRestaurant.tables[i].reservations++;
-				System.out.println("Table found,your reservation was successful");
+
+				System.out.println("\nTable found, your reservation was successful");
 				System.out.println("Table number = "+(i+1)+"\nStart Time = "+st+"\nEnd Time = "+et);
 				ifSuccessful=true;
 				
@@ -81,13 +76,11 @@ public class Reservation {
 
 			for(int j=0;j<=noOfReservations;j++)
 			{
-				if(Time.intersects(chosenRestaurant.tables[i].startTime[j], chosenRestaurant.tables[i].endTime[j], st, et)==false)
-				{
-					//noOfReservations++;
+				if(!Time.intersects(chosenRestaurant.tables[i].startTime[j], chosenRestaurant.tables[i].endTime[j], st, et)) {
 					chosenRestaurant.tables[i].startTime[noOfReservations]=st;
 					chosenRestaurant.tables[i].endTime[noOfReservations]=et;
 					chosenRestaurant.tables[i].reservations++;
-					System.out.println("Table found,your reservation was successful");
+					System.out.println("\nTable found, your reservation was successful");
 					System.out.println("Table number = "+(i+1)+"\nStart Time = "+st+"\nEnd Time = "+et);
 					ifSuccessful=true;
 					
@@ -101,37 +94,38 @@ public class Reservation {
 				            System.out.println("Exception Occurred" + e);
 				        }
 					 return;
+
 				}
-				else
-				{
+				else {
 					break;
 				}
 			}
 		}
-		if(ifSuccessful==false)
+
+		if(!ifSuccessful)
 		{
 			System.out.println("All tables are full");
 			start(use);
 		}
 	}
-	
-	
+
 	public void start(FoodAccount user) {
 		
 		int choice;
 		
 		Restaurant chosen = new Restaurant(null, null, null, null, 0, null, null, null);
 		
-		System.out.println(" 1]Search restaurant \t\t\t\t 2]Search by location");
+		System.out.println("\n1] Search restaurant \n2] Search by location");
+		System.out.println();
 		choice = StdIn.readInt();
 		if(choice==1) {
 			String resname,searchResult;
-			System.out.println("Enter restaurant name");
+			System.out.println("\nEnter restaurant name\n");
 			resname=StdIn.readString();
 			searchResult= restDetails.byName(resname);
 			System.out.println(searchResult);
 
-			if(searchResult.equals("Not Found")) {
+			if(searchResult.equals("\nNot Found")) {
 				start(user);
 			}
 
@@ -140,7 +134,7 @@ public class Reservation {
 			}
 
 			Time starttime, endtime;
-			System.out.println("Enter start time and end time for your reservation (HH:MM)");
+			System.out.println("\nEnter start time and end time for your reservation (HH:MM)\n");
 			String inp1,inp2;
 			String[] temp;
 			int hour,min;
@@ -160,9 +154,10 @@ public class Reservation {
 		}
 		
 		if(choice==2) {
-			System.out.println("Search by location: 1]My city 2]Enter location");
-			
+			System.out.println();
+			System.out.println("1] Search in your city \n2] Enter city manually\n");
 			choice= StdIn.readInt();
+
 			if(choice==1) {
 				Restaurant[] restInCity = restDetails.searchByLocation(user.city);
 				RestaurantList.printRes(restInCity);
@@ -170,7 +165,7 @@ public class Reservation {
 				choice = StdIn.readInt();
 				chosen  = restInCity[choice-1];
 				Time starttime,endtime;
-				System.out.println("\nEnter start time and end time for your reservation (HH:MM)");
+				System.out.println("\nEnter start time and end time for your reservation (HH:MM)\n");
 				String inp1,inp2;
 				String[] temp;
 				int hour,min;
@@ -191,14 +186,15 @@ public class Reservation {
 			else if(choice==2)
 			{
 				String city;
+				System.out.println();
 				city=StdIn.readString();
 				Restaurant[] restInCity = restDetails.searchByLocation(city);
 				RestaurantList.printRes(restInCity);
-				System.out.println("choose restuarant");
+				System.out.println("Choose restaurant\n");
 				choice = StdIn.readInt();
 				chosen  = restInCity[choice-1];
 				Time starttime,endtime;
-				System.out.println("Enter start time and end time for your reservation (HH:MM)");
+				System.out.println("\nEnter start time and end time for your reservation (HH:MM)\n");
 				String inp1,inp2;
 				String[] temp;
 				int hour,min;
