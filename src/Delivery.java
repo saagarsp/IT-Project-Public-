@@ -37,6 +37,9 @@ public class Delivery {
         Restaurant restaurant;
         RestaurantList resList = new RestaurantList();
 
+        System.out.println("\n1] Order takeaway \n2] Food delivery\n");
+        int choice = StdIn.readInt();
+
         System.out.println("\n1] Search by city");
         System.out.println("2] Search by rating");
         System.out.println("3] Search by type");
@@ -106,9 +109,18 @@ public class Delivery {
             e.printStackTrace();
         }
 
-        System.out.println("\nThe total cost for your order is Rs. " + cost);
-        System.out.println("Your order will be delivered in 45 minutes, you can log in again to check your delivery\n");
-        System.out.println("Thank you!");
+
+        if (choice == 1) {
+            System.out.println("\nThe total cost for your order is Rs. " + cost);
+            System.out.println("Your order will be ready in 20 minutes, visit the restaurant to pick up your order\n");
+            System.out.println("Thank you!");
+        }
+
+        else if (choice == 2) {
+            System.out.println("\nThe total cost for your order is Rs. " + cost);
+            System.out.println("Your order will be delivered in 45 minutes, you can log in again to check your delivery\n");
+            System.out.println("Thank you!");
+        }
     }
 
     public void checkDelivery() {
@@ -122,6 +134,6 @@ public class Delivery {
             System.out.println(user.cart[i]);
         }
         System.out.println("\nThe order was placed at: " + user.timeOrdered);
-        System.out.println("\nOrders usually take 45 minutes to be delivered");
+        System.out.println("\nOrders usually take 45 minutes for delivery and 20 minutes for takeaway");
     }
 }
