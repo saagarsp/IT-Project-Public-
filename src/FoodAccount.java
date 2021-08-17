@@ -178,17 +178,23 @@ public class FoodAccount {
 
         System.out.print("Enter your password : ");
         this.password = scan.next();
-        
-        if(this.password.equals(list.getPassword(j)))
-        System.out.println("\n\n\t\t\t\t\tYou have successfully logged in.");
-        else
-        {
-            System.out.print("Incorrect password! Please enter the password again : ");
-            this.password = scan.next();
+ 
+        while(true) {
+        	if(this.password.equals(list.getPassword(j))){
+        		 { System.out.println("\n\n\t\t\t\t\tYou have successfully logged in.");
+        		 break;
+        		 }
+        	}
+           
+            else
+            {
+                System.out.print("Incorrect password! Please enter the password again : ");
+                this.password = scan.next();
+            }
+        	
         }
-
+       
         return list.list[j];
-
     }
 
     public FoodAccount start(){

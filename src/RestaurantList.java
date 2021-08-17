@@ -101,7 +101,7 @@ public class RestaurantList extends Details{
 	public static void printRes(Restaurant[] res) {
 		int i = 0;
 		for (Restaurant m: res) {
-			System.out.println(i + ") " + m);
+			System.out.println(i+1 + ") " + m);
 			i++;
 		}
 	}

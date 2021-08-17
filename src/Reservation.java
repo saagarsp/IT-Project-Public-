@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class Reservation {
 	
 	static RestaurantList restDetails = new RestaurantList();
-
+	
+	
 	public Reservation() {
 		File file = new File("reservationrecords.txt");
     	Scanner myReader;
@@ -43,7 +44,9 @@ public class Reservation {
 			e.printStackTrace();
 		}
 	}
-
+    
+	
+	
 	public void reserve(Time st,Time et,Restaurant chosenRestaurant,FoodAccount use) {
 		
 		String finame = "reservationrecords.txt";
@@ -111,7 +114,8 @@ public class Reservation {
 			start(use);
 		}
 	}
-
+	
+	
 	public void start(FoodAccount user) {
 		
 		int choice;
@@ -184,8 +188,8 @@ public class Reservation {
 				
 				reserve(starttime,endtime,chosen,user);
 			}
-
-			if(choice==2) {
+			else if(choice==2)
+			{
 				String city;
 				city=StdIn.readString();
 				Restaurant[] restInCity = restDetails.searchByLocation(city);
@@ -218,4 +222,5 @@ public class Reservation {
 			}
 		}
 	}
+
 }
