@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Details {
 	
 	String[] names = new String[1002];
@@ -23,7 +25,8 @@ public class Details {
 	private String randomType() {
 		String[] typeString = {"Punjabi","Italian","Fastfood","South Indian"};
 		
-		return typeString[(int)(Math.random()*4)];
+		Random random = new Random(0);
+		return typeString[random.nextInt(4)];
 	}
 	
 	private String[] typeReturn() {
