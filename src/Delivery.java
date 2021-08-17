@@ -50,7 +50,7 @@ public class Delivery {
             Restaurant[] newList = resList.searchByLocation(city);
             RestaurantList.printRes(newList);
             System.out.println("Press the number corresponding to the restaurant to select it\n");
-            input = StdIn.readInt();
+            input = StdIn.readInt() - 1;
 
             while (input > newList.length) {
                 System.out.println("Please enter a valid number!\n");
@@ -65,7 +65,7 @@ public class Delivery {
             Restaurant[] newList = resList.searchByRating(rating);
             RestaurantList.printRes(newList);
             System.out.println("Press the number corresponding to the restaurant to select it\n");
-            input = StdIn.readInt();
+            input = StdIn.readInt() - 1;
             restaurant = newList[input];
         }
 
@@ -73,7 +73,7 @@ public class Delivery {
             Restaurant[] newList = resList.searchByType();
             RestaurantList.printRes(newList);
             System.out.println("Press the number corresponding to the restaurant to select it\n");
-            input = StdIn.readInt();
+            input = StdIn.readInt() - 1;
             restaurant = newList[input];
         }
 
