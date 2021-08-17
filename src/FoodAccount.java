@@ -203,7 +203,7 @@ public class FoodAccount {
         
         System.out.println("\n\n\t\t\t\t\t Welcome to Foomato\n\n");
 
-        System.out.println("1] New User(Sign up)\t\t\t 2] Existing user(log in)\n");
+        System.out.println("1] New User(Sign up)\n2] Existing user(log in)\n");
 
         int input = scan.nextInt();
 

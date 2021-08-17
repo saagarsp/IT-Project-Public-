@@ -60,8 +60,9 @@ public class RestaurantList extends Details{
 		ArrayList<Restaurant> list3 = new ArrayList<Restaurant>();
 		ArrayList<Restaurant> list4 = new ArrayList<Restaurant>();
 		String[] type = {"Punjabi","Italian","Fastfood","South Indian"};
+		System.out.println();
 		for(int i = 0; i<4; i++) {
-			StdOut.println("Press: "+(int)(i+1)+"."+type[i]);
+			StdOut.println((i+1) + "] " + type[i]);
 		}
 		for(int i = 0; i<1002; i++) {
 			if(this.restaurants[i].type.equals(type[0]))
@@ -86,7 +87,8 @@ public class RestaurantList extends Details{
 		
 		Restaurant[] resByType4 = new Restaurant[list4.size()];
 		resByType4 = list4.toArray(resByType4);
-		
+
+		System.out.println();
 		int n = StdIn.readInt();
 		if(n==1)
 			return resByType1;

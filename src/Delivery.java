@@ -6,6 +6,7 @@ import java.util.Date;
 public class Delivery {
 
     private int itemNumber = 0;
+    private int cost = 0;
     FoodAccount user;
 
     public Delivery(FoodAccount user) {
@@ -22,6 +23,7 @@ public class Delivery {
         user.cart[itemNumber] = restaurant.menu.menu[input - 1];
         itemNumber++;
         System.out.println("\n" + restaurant.menu.menu[input - 1] + " was added to your cart!");
+        cost += restaurant.menu.price[input - 1];
         System.out.println("\nPress 1 if you want to order more or 2 if you want to checkout\n");
         input = StdIn.readInt();
         if (input == 1)
@@ -35,10 +37,10 @@ public class Delivery {
         Restaurant restaurant;
         RestaurantList resList = new RestaurantList();
 
-        System.out.println("\nPress 1 if you want to search by city");
-        System.out.println("Press 2 if you want to search by rating");
-        System.out.println("Press 3 if you want to search by type");
-        System.out.println("Press 4 if you want to search by name\n");
+        System.out.println("\n1] Search by city");
+        System.out.println("2] Search by rating");
+        System.out.println("3] Search by type");
+        System.out.println("4] Search by name\n");
 
         int input = StdIn.readInt();
 
@@ -49,6 +51,11 @@ public class Delivery {
             RestaurantList.printRes(newList);
             System.out.println("Press the number corresponding to the restaurant to select it\n");
             input = StdIn.readInt();
+
+            while (input > newList.length) {
+                System.out.println("Please enter a valid number!\n");
+                input = StdIn.readInt();
+            }
             restaurant = newList[input];
         }
 
@@ -99,7 +106,8 @@ public class Delivery {
             e.printStackTrace();
         }
 
-        System.out.println("\nYour order will be delivered in 45 minutes, you can log in again to check how much longer the delivery will take\n");
+        System.out.println("\nThe total cost for your order is Rs. " + cost);
+        System.out.println("Your order will be delivered in 45 minutes, you can log in again to check your delivery\n");
         System.out.println("Thank you!");
     }
 

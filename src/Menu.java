@@ -12,7 +12,7 @@ public class Menu {
 		
 		System.out.println("MENU");
 		for(int i=0;i<24;i++) {
-			System.out.println(this.menu[i]+"------------>  ₹ "+price[i]);
+			System.out.println(this.menu[i] + "------------>  Rs. " + price[i]);
 		}
 	}
 }
