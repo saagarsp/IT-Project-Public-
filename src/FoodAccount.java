@@ -3,10 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Scanner;
 
-public class FoodAccount {
+public class FoodAccount{
 
     Scanner scan = new Scanner(System.in);
     int accNumber;
@@ -98,42 +97,42 @@ public class FoodAccount {
 
         this.accNumber = (list.count + 1);
         System.out.print("\nEnter your userID : ");
-        this.userId = scan.next();
+        this.userId = scan.nextLine();
 
         for(int i = 0; i < list.count; i++)
         {
             while(list.getUserId(i).equals(this.userId)){
                 System.out.print("Oops! UserId already registered. Please enter a different userId : ");
-                this.userId = scan.next();
+                this.userId = scan.nextLine();
             }
         }    
 
         System.out.print("Enter your password (minimum password size 8) : ");
-        String psswd = scan.next();
+        String psswd = scan.nextLine();
         while(psswd.length()<8){
             System.out.print("Please enter a valid password : ");
-            psswd = scan.next();
+            psswd = scan.nextLine();
         }
         this.password = psswd;
 
         System.out.print("Enter your phone/mobile no. : ");
-        this.phoneno = Double.parseDouble(scan.next());
+        this.phoneno = Double.parseDouble(scan.nextLine());
         double d = phoneno/1000000000;
         while((d<1)||(d>=10))
         {
             System.out.print("Please enter a valid phone/mobile no. : ");
-            this.phoneno = Double.parseDouble(scan.next());
+            this.phoneno = Double.parseDouble(scan.nextLine());
             d = phoneno/1000000000;
         }
 
         System.out.print("Enter your address : ");
-        this.address = scan.next();
+        this.address = scan.nextLine();
 
         System.out.print("Enter the no. of covid19 vaccine doses taken : ");
-        this.cov = Integer.parseInt(scan.next());
+        this.cov = Integer.parseInt(scan.nextLine());
 
         System.out.print("Enter the city of your residence : ");
-        this.city = scan.next();
+        this.city = scan.nextLine();
         
         list.list[list.count] = new FoodAccount(this.accNumber,this.userId,this.password,this.phoneno,this.address,this.cov,this.city);
         
@@ -158,7 +157,7 @@ public class FoodAccount {
         FoodAccountsList list = new FoodAccountsList();
 
         System.out.print("\nEnter your userID : ");
-        this.userId = scan.next();
+        this.userId = scan.nextLine();
         boolean cond = false;
         int j;
         
@@ -173,11 +172,11 @@ public class FoodAccount {
         if(cond == false){
             System.out.println("Oops! Seems like this userId hasn't been registered.");
             System.out.print("Please enter a different userId : ");
-            this.userId = scan.next();
+            this.userId = scan.nextLine();
         }
 
         System.out.print("Enter your password : ");
-        this.password = scan.next();
+        this.password = scan.nextLine();
  
         while(true) {
         	if(this.password.equals(list.getPassword(j))){
@@ -189,7 +188,7 @@ public class FoodAccount {
             else
             {
                 System.out.print("Incorrect password! Please enter the password again : ");
-                this.password = scan.next();
+                this.password = scan.nextLine();
             }
         	
         }
@@ -203,11 +202,11 @@ public class FoodAccount {
 
         System.out.println("1] New User(Sign up)\n2] Existing user(log in)\n");
 
-        int input = scan.nextInt();
+        int input = Integer.parseInt(scan.nextLine());
 
         while (input < 1 || input > 2) {
             System.out.println("\nEnter a valid number!\n");
-            input = StdIn.readInt();
+            input = Integer.parseInt(scan.nextLine());
         }
 
         if(input == 1)
