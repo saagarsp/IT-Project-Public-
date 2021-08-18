@@ -22,17 +22,14 @@ public class Details {
 		menus = returnMenu();
 	}
 	
-	private String randomType() {
+	private String[] typeReturn() {
+		String[] restype = new String[1002];
 		String[] typeString = {"Punjabi","Italian","Fastfood","South Indian"};
 		
 		Random random = new Random(0);
-		return typeString[random.nextInt(4)];
-	}
-	
-	private String[] typeReturn() {
-		String[] restype = new String[1002];
+		
 		for(int i = 0; i<1002; i++) {
-			restype[i] = randomType();
+			restype[i] = typeString[random.nextInt(4)];
 		}
 		return restype;
 	}
@@ -61,7 +58,7 @@ public class Details {
 		Details details = new Details();
 		
 		for(int i = 0; i<10; i++) {
-			StdOut.println(details.randomType());
+			StdOut.println(details.typeReturn()[i]);
 		}
 	}
 }

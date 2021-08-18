@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ReadFile {
+public final class ReadFile {
 
 	public static String[] readStrings(String s) {
 		String filename = s;
