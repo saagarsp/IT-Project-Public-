@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Delivery {
 
@@ -20,11 +21,16 @@ public class Delivery {
         restaurant.menu.displayMenu();
         System.out.println("\nEnter the number corresponding to the item you want to order\n");
         int input = StdIn.readInt();
+
+        while (input < 1 || input > 24) {
+            System.out.println("\nEnter a valid number!\n");
+            input = StdIn.readInt();
+        }
         user.cart[itemNumber] = restaurant.menu.menu[input - 1];
         itemNumber++;
         System.out.println("\n" + restaurant.menu.menu[input - 1] + " was added to your cart!");
         cost += restaurant.menu.price[input - 1];
-        System.out.println("\nPress 1 if you want to order more or 2 if you want to checkout\n");
+        System.out.println("\nEnter 1 if you want to order more or 2 if you want to checkout\n");
         input = StdIn.readInt();
         if (input == 1)
             addInCart(restaurant);
@@ -36,59 +42,111 @@ public class Delivery {
 
         Restaurant restaurant;
         RestaurantList resList = new RestaurantList();
+        Scanner scan = new Scanner(System.in);
 
         System.out.println("\n1] Order takeaway \n2] Food delivery\n");
         int choice = StdIn.readInt();
 
-        System.out.println("\n1] Search by city");
-        System.out.println("2] Search by rating");
-        System.out.println("3] Search by type");
-        System.out.println("4] Search by name\n");
+        System.out.println("\n1] Search restaurant by city");
+        System.out.println("2] Search restaurant by rating");
+        System.out.println("3] Search restaurant by category");
+        System.out.println("4] Search restaurant by name\n");
 
         int input = StdIn.readInt();
 
-        if (input == 1) {
-            System.out.println("\nEnter the city you want to search in:\n");
-            String city = StdIn.readString();
-            Restaurant[] newList = resList.searchByLocation(city);
-            RestaurantList.printRes(newList);
-            System.out.println("Press the number corresponding to the restaurant to select it\n");
-            input = StdIn.readInt() - 1;
+        while (input > 4 || input < 1) {
+            System.out.println("\nEnter a valid number!\n");
+            input = StdIn.readInt();
+        }
 
-            while (input > newList.length) {
-                System.out.println("Please enter a valid number!\n");
+        if (input == 1) {
+            System.out.println("\n1] Chennai\n2] Bangalore\n3] Hyderabad\n4] Kolkata\n5] Delhi");
+            System.out.println("6] Pune\n7] Coimbatore\n8] Vadodara\n9] Ahmedabad\n10] Jaipur\n");
+            input = StdIn.readInt();
+            System.out.println();
+
+            while (input > 10 || input < 1) {
+                System.out.println("\nEnter a valid number!\n");
                 input = StdIn.readInt();
             }
+
+            Restaurant[] newList;
+
+            if (input == 1) {
+                String city = "Chennai";
+                newList = resList.searchByLocation(city);
+            } else if (input == 2) {
+                String city = "Bangalore";
+                newList = resList.searchByLocation(city);
+            } else if (input == 3) {
+                String city = "Hyderabad";
+                newList = resList.searchByLocation(city);
+            } else if (input == 4) {
+                String city = "Kolkata";
+                newList = resList.searchByLocation(city);
+            } else if (input == 5) {
+                String city = "Delhi";
+                newList = resList.searchByLocation(city);
+            } else if (input == 6) {
+                String city = "Pune";
+                newList = resList.searchByLocation(city);
+            } else if (input == 7) {
+                String city = "Coimbatore";
+                newList = resList.searchByLocation(city);
+            } else if (input == 8) {
+                String city = "Vadodara";
+                newList = resList.searchByLocation(city);
+            } else if (input == 9) {
+                String city = "Ahmedabad";
+                newList = resList.searchByLocation(city);
+            } else {
+                String city = "Jaipur";
+                newList = resList.searchByLocation(city);
+            }
+
+            RestaurantList.printRes(newList);
+            System.out.println("Enter the number corresponding to the restaurant to select it\n");
+            input = StdIn.readInt() - 1;
+            System.out.println();
             restaurant = newList[input];
         }
 
         else if (input == 2) {
             System.out.println("\nEnter the rating you want to search by (number from 0 - 5)\n");
             double rating = StdIn.readDouble();
+            while (rating < 0 || rating > 5) {
+                System.out.println("\nEnter a valid number!\n");
+                rating = StdIn.readInt();
+            }
+            System.out.println();
             Restaurant[] newList = resList.searchByRating(rating);
             RestaurantList.printRes(newList);
-            System.out.println("Press the number corresponding to the restaurant to select it\n");
+            System.out.println("Enter the number corresponding to the restaurant to select it\n");
             input = StdIn.readInt() - 1;
+            System.out.println();
             restaurant = newList[input];
         }
 
         else if (input == 3) {
             Restaurant[] newList = resList.searchByType();
             RestaurantList.printRes(newList);
-            System.out.println("Press the number corresponding to the restaurant to select it\n");
+            System.out.println("Enter the number corresponding to the restaurant to select it\n");
             input = StdIn.readInt() - 1;
+            System.out.println();
             restaurant = newList[input];
         }
 
-        else if (input == 4) {
-            System.out.println("\nEnter the name of the restaurant\n");
-            String name = StdIn.readString();
-            restaurant = resList.searchByName(name);
-        }
-
         else {
-            System.out.println("\nInvalid input");
-            return;
+            System.out.println("\nEnter the name of the restaurant: ");
+            String name = scan.next();
+            restaurant = resList.searchByName(name);
+            while (restaurant.name.equalsIgnoreCase("not found")) {
+                System.out.println("\nNo restaurants found\n");
+                System.out.println("\nEnter the name of the restaurant: ");
+                name = scan.next();
+                restaurant = resList.searchByName(name);
+            }
+            System.out.println();
         }
 
         addInCart(restaurant);
