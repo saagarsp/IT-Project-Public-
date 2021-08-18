@@ -40,12 +40,12 @@ public class RestaurantList extends Details{
 	
 	public Restaurant searchByName(String s) {
 		for(int i = 0; i<1002; i++) {
-			if(this.restaurants[i].name.equals(s))
+			if(this.restaurants[i].name.equalsIgnoreCase(s))
 				return this.restaurants[i];
 		}
 		return new Restaurant("Not Found", null, null, null, 0, null, null, null);
 	}
-	
+
 	public String byName(String s) {
 		for(int i = 0; i<1002; i++) {
 			if(this.restaurants[i].name.equalsIgnoreCase(s))
@@ -59,7 +59,7 @@ public class RestaurantList extends Details{
 		ArrayList<Restaurant> list2 = new ArrayList<Restaurant>();
 		ArrayList<Restaurant> list3 = new ArrayList<Restaurant>();
 		ArrayList<Restaurant> list4 = new ArrayList<Restaurant>();
-		String[] type = {"Punjabi","Italian","Fastfood","South Indian"};
+		String[] type = {"Punjabi","Italian","Fast Food","South Indian"};
 		System.out.println();
 		for(int i = 0; i<4; i++) {
 			StdOut.println((i+1) + "] " + type[i]);
@@ -107,6 +107,7 @@ public class RestaurantList extends Details{
 			i++;
 		}
 	}
+<<<<<<< HEAD
 	
 	public static void main(String[] args) {
 		RestaurantList res = new RestaurantList();
@@ -120,4 +121,6 @@ public class RestaurantList extends Details{
 		//System.out.println(s);
 	}
 
+=======
+>>>>>>> 7550ed6823024b05468008376c056917fd58453c
 }
