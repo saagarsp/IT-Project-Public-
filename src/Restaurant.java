@@ -36,7 +36,7 @@ public class Restaurant {
 	public String toString() {
 		if(this.name.equals("Not Found"))
 			return this.name;
-		return this.name + "\n" + this.rating + "\n" + this.type + "\n" ;
+		return this.name + "\n" + "Rating: " + this.rating + "\n" + "Category: " + this.type + "\n" ;
 	}
 	
 }

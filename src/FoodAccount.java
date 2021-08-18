@@ -200,19 +200,21 @@ public class FoodAccount {
     public FoodAccount start(){
 
         FoodAccount sample = new FoodAccount(4,"sdw","def",958485522,"43 afhindfr",2,"ahm");
-        
-        System.out.println("\n\n\t\t\t\t\t Welcome to Foomato\n\n");
 
         System.out.println("1] New User(Sign up)\n2] Existing user(log in)\n");
 
         int input = scan.nextInt();
 
+        while (input < 1 || input > 2) {
+            System.out.println("\nEnter a valid number!\n");
+            input = StdIn.readInt();
+        }
+
         if(input == 1)
         sample = newAccount();
-        else if(input == 2)
-        sample = existingAccount();
         else
-        System.out.println("Please enter valid input");
+        sample = existingAccount();
+
         return sample;
     }
 
