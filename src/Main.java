@@ -146,8 +146,9 @@ public class Main {
             reservation.start(user);
         } else if(input == 4) {
             delivery.checkDelivery();
-        } else {
-
+        } 
+        else if(input==5){
+        	Reservation.checkReservation(user);
         }
     }
 }
